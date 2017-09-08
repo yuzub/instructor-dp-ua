@@ -1,5 +1,5 @@
 <div class="pannel panel-primary">
-    <div class="panel-heading">Список автоинструкторов г. Днепр</div>
+    <div class="panel-heading">{{pageTitle}}</div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">Фильтр по:</div>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" *ngIf='products && products.length'>
                 <thead>
                     <tr>
                         <th><button class="btn btn-primary">Показать фото</button></th>
