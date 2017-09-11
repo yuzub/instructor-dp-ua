@@ -4,27 +4,45 @@
         <div class="row">
             <div class="col-md-2">Фильтр по:</div>
             <div class="col-md-4">
-                <input type="text">
+                <input type="text" [(ngModel)]=gearboxFilter>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                Отфильтровано по:
+                Отфильтровано по: {{gearboxFilter}}
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" *ngIf='products && products.length'>
+            <table class="table" *ngIf="instructors && instructors.length">
                 <thead>
                     <tr>
-                        <th><button class="btn btn-primary">Показать фото</button></th>
+                        <th>
+                            <button class="btn btn-primary" (click)="toggleImg()">
+                                {{ showImg ? "Спрятать" : "Показать" }} фото
+                            </button>
+                        </th>
                         <th>ФИО</th>
                         <th>Авто</th>
                         <th>КПП</th>
                         <th>Район начала занятий</th>
+                        <th>Стоимость 1-го занятия (90 мин)</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr *ngFor="let instructor of instructors">
+                        <td>
+                            <img *ngIf="showImg"
+                                [src]="instructor.photoUrl" 
+                                [title]="instructor.instructorName" 
+                                [style.width.px]="imgWidth" 
+                                [style.margin.px]="imgMargin">
+                        </td>
+                        <td>{{instructor.instructorName}}</td>
+                        <td>{{instructor.car}}</td>
+                        <td>{{instructor.gearbox}}</td>
+                        <td>{{instructor.cityarea | uppercase}}</td>
+                        <td>{{instructor.price90min | currency:'UAH':false:'1.2-2' }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
