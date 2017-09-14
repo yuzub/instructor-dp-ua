@@ -45,7 +45,11 @@
                                 [style.width.px]="imgWidth"
                                 [style.margin.px]="imgMargin">
                         </td>
-                        <td>{{instructor.instructorName}}</td>
+                        <td>
+                          <a [routerLink]="['/instructors', instructor.instructorId]">
+                            {{instructor.instructorName}}
+                          </a>
+                        </td>
                         <td>{{instructor.car}}</td>
                         <td>{{instructor.gearbox}}</td>
                         <td>{{instructor.cityarea | uppercase}}</td>
