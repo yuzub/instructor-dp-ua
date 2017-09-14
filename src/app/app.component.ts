@@ -8,5 +8,5 @@ import { InstructorService } from "./instructors/instructor.service";
   providers: [InstructorService]
 })
 export class AppComponent {
-  title = 'Ваш автоинструктор';
+  pageTitle = 'Ваш автоинструктор';
 }

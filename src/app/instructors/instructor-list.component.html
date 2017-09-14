@@ -2,8 +2,8 @@
     <div class="panel-heading">{{pageTitle}}</div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-2">Фильтр по:</div>
-            <div class="col-md-4">
+            <div class="col-sm-2">Фильтр по:</div>
+            <div class="col-sm-4">
               Коробка:
               <!-- <input type="text" [(ngModel)]=gearboxFilter> -->
               <select name="gb" id="" [(ngModel)]=gearboxFilter>
@@ -12,12 +12,12 @@
                 <option value="Автомат">Автомат</option>
               </select>
             </div>
-            <div class="col-md-4">Автомобиль: <input type="text" [(ngModel)]=carFilter></div>
+            <div class="col-sm-4">Автомобиль: <input type="text" [(ngModel)]=carFilter></div>
         </div>
         <div class="row">
-            <div class="col-md-2">Отфильтровано по:</div>
-            <div class="col-md-4">{{gearboxFilter}}</div>
-            <div class="col-md-4">{{carFilter}}</div>
+            <div class="col-sm-2">Отфильтровано по:</div>
+            <div class="col-sm-4">{{gearboxFilter}}</div>
+            <div class="col-sm-4">{{carFilter}}</div>
         </div>
         <div class="table-responsive">
             <table class="table" *ngIf="instructors && instructors.length">

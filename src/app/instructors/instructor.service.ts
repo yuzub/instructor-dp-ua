@@ -15,7 +15,7 @@ export class InstructorService {
 
     getInstructors(): Observable<IInstructor[]> {
         return this._http.get<IInstructor[]>(this._instructorUrl)
-        .do(data => console.log('All:' + JSON.stringify(data)))
+        // .do(data => console.log('All:' + JSON.stringify(data)))
         .catch(this.handleError);
     }
 

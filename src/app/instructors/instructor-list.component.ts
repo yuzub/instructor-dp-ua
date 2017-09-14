@@ -3,7 +3,7 @@ import { IInstructor } from "./instructor";
 import { InstructorService } from "./instructor.service";
 
 @Component({
-  selector: 'ai-instructors',
+  // selector: 'ai-instructors',
   templateUrl: './instructor-list.component.html',
   styleUrls: ['./instructor-list.component.css']
 })
