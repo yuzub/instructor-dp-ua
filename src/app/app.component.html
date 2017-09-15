@@ -7,9 +7,17 @@
         <li><a [routerLink]="['/welcome']">Главная</a></li>
         <li><a [routerLink]="['/instructors']">Список инструкторов</a></li>
       </ul>
-    </div>  
+    </div>
   </nav>
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+</div>
+
+<div>
+  <ul>
+    <li class="text" *ngFor="let instructor of instructors | async">
+      {{instructor.instructorName}}
+    </li>
+  </ul>
 </div>
