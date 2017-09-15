@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { InstructorListComponent } from './instructors/instructor-list.component';
 import { InstructorDetailComponent } from './instructors/instructor-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
+import { InstructorGuardService } from './instructors/instructor-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,13 @@ import { WelcomeComponent } from "./home/welcome.component";
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'instructors', component: InstructorListComponent },
-      { path: 'instructors/:id', component: InstructorDetailComponent },
+      { path: 'instructors/:id', canActivate: [InstructorGuardService], component: InstructorDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ])
   ],
-  providers: [],
+  providers: [InstructorGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
