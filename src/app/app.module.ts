@@ -7,21 +7,13 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { InstructorListComponent } from './instructors/instructor-list.component';
 import { InstructorDetailComponent } from './instructors/instructor-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 import { InstructorGuardService } from './instructors/instructor-guard.service';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDTkUPX3aZjYJe8sGLFX1pTXdMbKC1TN1c",
-  authDomain: "instructor-dp-ua.firebaseapp.com",
-  databaseURL: "https://instructor-dp-ua.firebaseio.com",
-  projectId: "instructor-dp-ua",
-  storageBucket: "instructor-dp-ua.appspot.com",
-  messagingSenderId: "1066323488008"
-};
 
 @NgModule({
   declarations: [
@@ -30,7 +22,7 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig), // imports firebase/app needed for everything
+    AngularFireModule.initializeApp(environment.firebaseConfig), // imports firebase/app needed for everything
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     HttpClientModule,

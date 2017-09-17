@@ -40,7 +40,7 @@
                     <tr *ngFor="let instructor of filteredInstructors">
                         <td>
                             <img *ngIf="showImg"
-                                [src]="instructor.photoUrl"
+                                src='./assets/images/{{instructor.instructorId}}.png'
                                 [title]="instructor.instructorName"
                                 [style.width.px]="imgWidth"
                                 [style.margin.px]="imgMargin">
