@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IInstructor } from "./instructor";
-import { InstructorService } from "./instructor.service";
+import { InstructorFbService } from "./instructor-fb.service";
+import { FirebaseListObservable } from "angularfire2/database";
 
 @Component({
   // selector: 'ai-instructors',
@@ -9,6 +10,8 @@ import { InstructorService } from "./instructor.service";
 })
 
 export class InstructorListComponent implements OnInit {
+  $instructors: FirebaseListObservable<IInstructor[]>;
+
   pageTitle: string = 'Список автоинструкторов г. Днепр';
   imgWidth: number = 50;
   imgMargin: number = 2;
@@ -38,20 +41,26 @@ export class InstructorListComponent implements OnInit {
   filteredInstructors: IInstructor[];
   instructors: IInstructor[] = [];
 
-  constructor(private _instructorService: InstructorService) {
-  }
+  constructor(private instructorFbService: InstructorFbService) { }
 
   toggleImg(): void {
     this.showImg = !this.showImg;
   }
 
   ngOnInit(): void {
-    this._instructorService.getInstructors()
+    this.$instructors = this.instructorFbService.getInstructors();
+    this.$instructors
       .subscribe(instructors => {
         this.instructors = instructors;
         this.filteredInstructors = this.instructors;
       },
       error => this.errorMessage = <any>error);
+    /* this._instructorService.getInstructors()
+      .subscribe(instructors => {
+        this.instructors = instructors;
+        this.filteredInstructors = this.instructors;
+      },
+      error => this.errorMessage = <any>error); */
   }
 
   performFilter(filterByGearBox: string, filterByCar: string): IInstructor[] {

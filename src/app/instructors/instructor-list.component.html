@@ -1,64 +1,62 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">{{pageTitle}}</div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-2">Фильтр по:</div>
-            <div class="col-sm-4">
-              Коробка:
-              <!-- <input type="text" [(ngModel)]=gearboxFilter> -->
-              <select name="gb" id="" [(ngModel)]=gearboxFilter>
+  <div class="panel-heading">{{pageTitle}}</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">Фильтр по:</div>
+      <div class="col-sm-4">
+        Коробка:
+        <!-- <input type="text" [(ngModel)]=gearboxFilter> -->
+        <select name="gb" id="" [(ngModel)]=gearboxFilter>
                 <option value="">Автомат и механика</option>
                 <option value="Механика">Механика</option>
                 <option value="Автомат">Автомат</option>
               </select>
-            </div>
-            <div class="col-sm-4">Автомобиль: <input type="text" [(ngModel)]=carFilter></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">Отфильтровано по:</div>
-            <div class="col-sm-4">{{gearboxFilter}}</div>
-            <div class="col-sm-4">{{carFilter}}</div>
-        </div>
-        <div class="table-responsive">
-            <table class="table" *ngIf="instructors && instructors.length">
-                <thead>
-                    <tr>
-                        <th>
-                            <button class="btn btn-primary" (click)="toggleImg()">
+      </div>
+      <div class="col-sm-4">Автомобиль: <input type="text" [(ngModel)]=carFilter></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">Отфильтровано по:</div>
+      <div class="col-sm-4">{{gearboxFilter}}</div>
+      <div class="col-sm-4">{{carFilter}}</div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="instructors && instructors.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary" (click)="toggleImg()">
                                 {{ showImg ? "Спрятать" : "Показать" }} фото
                             </button>
-                        </th>
-                        <th>ФИО</th>
-                        <th>Авто</th>
-                        <th>КПП</th>
-                        <th>Район</th>
-                        <th>Занятие (90 мин)</th>
-                        <th>Рейтинг</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let instructor of filteredInstructors">
-                        <td>
-                            <img *ngIf="showImg"
-                                src='./assets/images/{{instructor.instructorId}}.png'
-                                [title]="instructor.instructorName"
-                                [style.width.px]="imgWidth"
-                                [style.margin.px]="imgMargin">
-                        </td>
-                        <td>
-                          <a [routerLink]="['/instructors', instructor.instructorId]">
+            </th>
+            <th>ФИО</th>
+            <th>Авто</th>
+            <th>КПП</th>
+            <th>Район</th>
+            <th>Занятие (90 мин)</th>
+            <th>Рейтинг</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let instructor of filteredInstructors"> -->
+          <tr *ngFor="let instructor of $instructors | async">
+            <td>
+              <img *ngIf="showImg" src='./assets/images/{{instructor.instructorId}}.png' [title]="instructor.instructorName" [style.width.px]="imgWidth"
+                [style.margin.px]="imgMargin">
+            </td>
+            <td>
+              <a [routerLink]="['/instructors', instructor.instructorId]">
                             {{instructor.instructorName}}
                           </a>
-                        </td>
-                        <td>{{instructor.car}}</td>
-                        <td>{{instructor.gearbox}}</td>
-                        <td>{{instructor.cityarea | uppercase}}</td>
-                        <td>{{instructor.price90min | currency:'UAH':false:'1.2-2' }}</td>
-                        <td>{{instructor.starRating | number}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            </td>
+            <td>{{instructor.car}}</td>
+            <td>{{instructor.gearbox}}</td>
+            <td>{{instructor.cityarea | uppercase}}</td>
+            <td>{{instructor.price90min | currency:'UAH':false:'1.2-2' }}</td>
+            <td>{{instructor.starRating | number}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 
 </div>

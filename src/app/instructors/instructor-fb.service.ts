@@ -5,8 +5,7 @@ import { IInstructor } from "./instructor";
 
 @Injectable()
 export class InstructorFbService {
-  instructors$: FirebaseListObservable<any[]>;
-  // instructors$: FirebaseObjectObservable<IInstructor>;
+  instructors$: FirebaseListObservable<IInstructor[]>;
 
   constructor(private db: AngularFireDatabase) {
     this.instructors$ = this.db.list('/instructors');

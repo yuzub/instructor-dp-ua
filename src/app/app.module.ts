@@ -15,10 +15,11 @@ import { InstructorDetailComponent } from './instructors/instructor-detail.compo
 import { WelcomeComponent } from "./home/welcome.component";
 import { InstructorGuardService } from './instructors/instructor-guard.service';
 import { InstructorFbService } from "./instructors/instructor-fb.service";
+import { InstructorEditComponent } from './instructors/instructor-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent, InstructorListComponent, InstructorDetailComponent, WelcomeComponent
+    AppComponent, InstructorListComponent, InstructorDetailComponent, WelcomeComponent, InstructorEditComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { InstructorFbService } from "./instructors/instructor-fb.service";
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'instructors', component: InstructorListComponent },
-      { path: 'instructors/:id', canActivate: [InstructorGuardService], component: InstructorDetailComponent },
+      { path: 'instructors/:id', component: InstructorDetailComponent },
+      { path: 'instructor-edit', component: InstructorEditComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }

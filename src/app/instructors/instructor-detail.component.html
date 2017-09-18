@@ -1,9 +1,9 @@
-<div class="panel panel-primary" *ngIf='instructor'>
+<div class="panel panel-primary" *ngIf='instructor$ | async as instructor'>
   <div class="panel-heading">
-    {{pageTitle + ': ' + ( instructorFB$ | async)?.instructorName}}
+    {{pageTitle + ': ' + instructor.instructorName}}
   </div>
   <div class="panel-body">
-    {{ instructorFB$ | async | json }}
+    {{ instructor$ | async | json }}
   </div>
   <div class="panel-footer">
     <a class="btn btn-default" (click)='onBack()'>

@@ -1,0 +1,123 @@
+{
+  "instructors" : [ {
+    "car" : "Chevrolet Aveo",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 1,
+    "instructorName" : "Владимиров Владимир Алексеевич",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 190,
+    "starRating" : 4.8
+  }, {
+    "car" : "ZAZ Vida",
+    "cityarea" : "Центр Тополь",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 2,
+    "instructorName" : "Соловьев Вадим Александрович",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 200,
+    "starRating" : 4.5
+  }, {
+    "car" : "Chevrolet Lachetti",
+    "cityarea" : "Центр Тополь",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 3,
+    "instructorName" : "Разумный Юрий Викторович",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 200,
+    "starRating" : 4.8
+  }, {
+    "car" : "Nissan Note",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "автомат",
+    "instructorId" : 4,
+    "instructorName" : "Владимиров Владислав Владимирович",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 300,
+    "starRating" : 4.0
+  }, {
+    "car" : "Daewoo Sens",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 5,
+    "instructorName" : "Швец Анатолий Сергеевич",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 190,
+    "starRating" : 4.0
+  }, {
+    "car" : "Hyundai Accent",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 6,
+    "instructorName" : "Кононенко Юрий Григорьевич",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 200,
+    "starRating" : 4.8
+  }, {
+    "car" : "Chevrolet Aveo",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 7,
+    "instructorName" : "Рябовол Константин Альбертович",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 200,
+    "starRating" : 4.5
+  }, {
+    "car" : "Daewoo Lanos",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "механика",
+    "instructorId" : 8,
+    "instructorName" : "Иванов Алексей Геннадьевич",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 200,
+    "starRating" : 4.0
+  }, {
+    "car" : "",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "автомат",
+    "instructorId" : 9,
+    "instructorName" : "Петров",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 300,
+    "starRating" : 4.0
+  }, {
+    "car" : "",
+    "cityarea" : "Центр",
+    "email" : "",
+    "gearbox" : "автомат",
+    "instructorId" : 10,
+    "instructorName" : "Васечкин",
+    "phone" : "",
+    "photoCarUrl" : "",
+    "photoUrl" : "http://res.cloudinary.com/yuzub/image/upload/v1505128983/panda_vmckn8.jpg",
+    "price90min" : 300,
+    "starRating" : 4.0
+  } ]
+}
