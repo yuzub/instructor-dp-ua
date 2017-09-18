@@ -14,6 +14,7 @@ import { InstructorListComponent } from './instructors/instructor-list.component
 import { InstructorDetailComponent } from './instructors/instructor-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 import { InstructorGuardService } from './instructors/instructor-guard.service';
+import { InstructorFbService } from "./instructors/instructor-fb.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { InstructorGuardService } from './instructors/instructor-guard.service';
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ])
   ],
-  providers: [InstructorGuardService],
+  providers: [InstructorFbService, InstructorGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
