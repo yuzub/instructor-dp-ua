@@ -5,13 +5,23 @@ import { IInstructor } from "./instructor";
 
 @Injectable()
 export class InstructorFbService {
+  obj$: FirebaseObjectObservable<any>;
   instructors$: FirebaseListObservable<IInstructor[]>;
 
   constructor(private db: AngularFireDatabase) {
+    this.obj$ = this.db.object('/someobj');
     this.instructors$ = this.db.list('/instructors');
   }
 
-  getInstructor(instructorKey: string) {
+// Working with Firebase Object
+
+  saveObj(obj) {
+    this.obj$.set(obj);
+  }
+
+// Working with Firebase List
+
+  getInstructor(instructorKey: string): FirebaseObjectObservable<IInstructor> {
     return this.db.object(`/instructors/${instructorKey}`);
   }
 
@@ -39,8 +49,8 @@ export class InstructorFbService {
 
   deleteEverything() {
     this.instructors$.remove()
-    .then(_ => console.log('delete all - success'))
-    .catch(error => console.log(error));
+      .then(_ => console.log('delete all - success'))
+      .catch(error => console.log(error));
   }
 
 }

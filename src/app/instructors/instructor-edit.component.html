@@ -17,4 +17,22 @@
       <i class="glyphicon glyphicon-chevron-left"></i> Список
     </a>
   </div>
+
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div class="input-container" *ngIf="">
+      <input type="text" [(ngModel)]="someObj.name">
+    </div>
+    <div class="actions-container">
+      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-primary">Delete</button>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a class="btn btn-default" (click)="onBack()">
+      <i class="glyphicon glyphicon-chevron-left"></i> Список
+    </a>
+  </div>
 </div>
