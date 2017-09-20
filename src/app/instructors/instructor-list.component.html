@@ -38,13 +38,14 @@
         </thead>
         <tbody>
           <!-- <tr *ngFor="let instructor of filteredInstructors"> -->
-          <tr *ngFor="let instructor of $instructors | async">
+          <tr *ngFor="let instructor of instructors$ | async">
             <td>
               <img *ngIf="showImg" src='./assets/images/{{instructor.instructorId}}.png' [title]="instructor.instructorName" [style.width.px]="imgWidth"
                 [style.margin.px]="imgMargin">
             </td>
             <td>
-              <a [routerLink]="['/instructors', instructor.instructorId]">
+              <!-- <a [routerLink]="['/instructors', instructor.instructorId]"> -->
+              <a [routerLink]="['/instructors', instructor.$key]">
                             {{instructor.instructorName}}
                           </a>
             </td>
@@ -57,6 +58,7 @@
         </tbody>
       </table>
     </div>
+    <button class="btn btn-primary add" [routerLink]="['/instructor-edit/new']">Add instructor</button>
   </div>
 
 </div>

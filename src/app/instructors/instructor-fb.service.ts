@@ -13,13 +13,27 @@ export class InstructorFbService {
     this.instructors$ = this.db.list('/instructors');
   }
 
-// Working with Firebase Object
+  // Working with Firebase Object
 
   saveObj(obj) {
-    this.obj$.set(obj);
+    this.obj$.set({ name: obj.name })
+      .then(_ => console.log('save obj - success'))
+      .catch(error => console.log(error));
   }
 
-// Working with Firebase List
+  updateObj(obj) {
+    this.obj$.update(obj)
+      .then(_ => console.log('update obj - success'))
+      .catch(error => console.log(error));
+  }
+
+  removeObj(obj) {
+    this.obj$.remove()
+      .then(_ => console.log('remove obj - success'))
+      .catch(error => console.log(error));
+  }
+
+  // Working with Firebase List
 
   getInstructor(instructorKey: string): FirebaseObjectObservable<IInstructor> {
     return this.db.object(`/instructors/${instructorKey}`);

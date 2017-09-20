@@ -10,7 +10,7 @@ import { FirebaseListObservable } from "angularfire2/database";
 })
 
 export class InstructorListComponent implements OnInit {
-  $instructors: FirebaseListObservable<IInstructor[]>;
+  instructors$: FirebaseListObservable<IInstructor[]>;
 
   pageTitle: string = 'Список автоинструкторов г. Днепр';
   imgWidth: number = 50;
@@ -48,19 +48,18 @@ export class InstructorListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.$instructors = this.instructorFbService.getInstructors();
-    this.$instructors
+    this.getInstructors();
+
+    this.instructors$
       .subscribe(instructors => {
         this.instructors = instructors;
         this.filteredInstructors = this.instructors;
       },
       error => this.errorMessage = <any>error);
-    /* this._instructorService.getInstructors()
-      .subscribe(instructors => {
-        this.instructors = instructors;
-        this.filteredInstructors = this.instructors;
-      },
-      error => this.errorMessage = <any>error); */
+  }
+
+  getInstructors() {
+    this.instructors$ = this.instructorFbService.getInstructors();
   }
 
   performFilter(filterByGearBox: string, filterByCar: string): IInstructor[] {

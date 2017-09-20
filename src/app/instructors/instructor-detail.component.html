@@ -9,5 +9,9 @@
     <a class="btn btn-default" (click)='onBack()'>
       <i class="glyphicon glyphicon-chevron-left"></i> Список
     </a>
+    <a class="btn btn-primary" [routerLink]="['/instructor-edit', instructor.$key]">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+
   </div>
 </div>

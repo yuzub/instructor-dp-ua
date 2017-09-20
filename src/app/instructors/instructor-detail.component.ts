@@ -24,7 +24,7 @@ export class InstructorDetailComponent implements OnInit {
     let id = +this._route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
 
-    this.instructor$ = this.instructorFbService.getInstructor(id - 1 + '');
+    this.instructor$ = this.instructorFbService.getInstructor(id + '');
   }
 
   onBack(): void {

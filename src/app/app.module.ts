@@ -31,7 +31,7 @@ import { InstructorEditComponent } from './instructors/instructor-edit.component
     RouterModule.forRoot([
       { path: 'instructors', component: InstructorListComponent },
       { path: 'instructors/:id', component: InstructorDetailComponent },
-      { path: 'instructor-edit', component: InstructorEditComponent },
+      { path: 'instructor-edit/:id', component: InstructorEditComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }

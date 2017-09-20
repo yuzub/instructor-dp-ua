@@ -11,6 +11,9 @@ import { IInstructor } from "./instructor";
   styleUrls: ['./instructor-edit.component.css']
 })
 export class InstructorEditComponent implements OnInit {
+  id: string;
+  isNewInstructor: boolean;
+  obj$: FirebaseObjectObservable<any>;
   instructor$: FirebaseObjectObservable<IInstructor>;
   pageTitle = 'Инструктор';
 
@@ -19,14 +22,29 @@ export class InstructorEditComponent implements OnInit {
     private instructorFbService: InstructorFbService) { }
 
   ngOnInit() {
-    let id = +this._route.snapshot.paramMap.get('id');
-    this.pageTitle += `: ${id}`;
+    this.id = this._route.snapshot.paramMap.get('id');
+    this.pageTitle += `: ${this.id}`;
+    this.isNewInstructor = this.id == 'new';
+    if (!this.isNewInstructor) this.getInstructor();
 
-    this.instructor$ = this.instructorFbService.getInstructor(id - 1 + '');
+
+    this.obj$ = this.instructorFbService.obj$;
+  }
+
+  getInstructor() {
+    this.instructor$ = this.instructorFbService.getInstructor(this.id);
   }
 
   saveObj(obj) {
     this.instructorFbService.saveObj(obj);
+  }
+
+  updateObj(obj) {
+    this.instructorFbService.updateObj(obj);
+  }
+
+  removeObj(obj) {
+    this.instructorFbService.removeObj(obj);
   }
 
   onBack(): void {
