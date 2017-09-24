@@ -5,12 +5,13 @@
   <div class="panel-body">
     <div class="input-container">
       {{instructor | json}}<br>
+      {{instructor.$key}}<br>
       <input type="text" [(ngModel)]="instructor.instructorName">
     </div>
     <div class="actions-container">
-      <button class="btn btn-primary">Save</button>
-      <button class="btn btn-primary">Update</button>
-      <button class="btn btn-primary">Delete</button>
+      <button class="btn btn-primary" *ngIf="isNewInstructor" (click)="addInstructor(instructor)">Save</button>
+      <button class="btn btn-primary" *ngIf="!isNewInstructor" (click)="updateInstructor(instructor.$key, instructor)">Update</button>
+      <button class="btn btn-primary" *ngIf="!isNewInstructor" (click)="deleteInstructor(instructor.$key)">Delete</button>
     </div>
   </div>
   <div class="panel-footer">

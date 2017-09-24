@@ -46,7 +46,7 @@
             <td>
               <!-- <a [routerLink]="['/instructors', instructor.instructorId]"> -->
               <a [routerLink]="['/instructors', instructor.$key]">
-                            {{instructor.instructorName}}
+                            {{instructor.$key}} {{instructor.instructorName}}
                           </a>
             </td>
             <td>{{instructor.car}}</td>

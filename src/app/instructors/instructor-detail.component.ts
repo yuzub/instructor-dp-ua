@@ -21,10 +21,10 @@ export class InstructorDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = +this._route.snapshot.paramMap.get('id');
+    let id = this._route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${id}`;
 
-    this.instructor$ = this.instructorFbService.getInstructor(id + '');
+    this.instructor$ = this.instructorFbService.getInstructor(id);
   }
 
   onBack(): void {

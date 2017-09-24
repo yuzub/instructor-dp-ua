@@ -4,6 +4,8 @@ import { FirebaseObjectObservable } from "angularfire2/database";
 import { Router, ActivatedRoute } from "@angular/router";
 
 import { IInstructor } from "./instructor";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'ai-instructor-edit',
@@ -25,7 +27,9 @@ export class InstructorEditComponent implements OnInit {
     this.id = this._route.snapshot.paramMap.get('id');
     this.pageTitle += `: ${this.id}`;
     this.isNewInstructor = this.id == 'new';
-    if (!this.isNewInstructor) this.getInstructor();
+    // console.log(this.isNewInstructor);
+    // if (!this.isNewInstructor) this.getInstructor();
+    !this.isNewInstructor ? this.getInstructor() : this.instructor$ = Observable.of({}) as FirebaseObjectObservable<IInstructor>;
 
 
     this.obj$ = this.instructorFbService.obj$;
@@ -45,6 +49,20 @@ export class InstructorEditComponent implements OnInit {
 
   removeObj(obj) {
     this.instructorFbService.removeObj(obj);
+  }
+
+  addInstructor(instructor: IInstructor) {
+    this.instructorFbService.addInstructor(instructor)
+    .then(_ => this._router.navigate(['/instructors']) );
+  }
+
+  updateInstructor(instructorKey: string, instructor: IInstructor) {
+    this.instructorFbService.updateInstructor(instructorKey, instructor);
+  }
+
+  deleteInstructor(instructorKey: string) {
+    this.instructorFbService.deleteInstructor(instructorKey)
+    .then(_ => this._router.navigate(['/instructors']) );
   }
 
   onBack(): void {

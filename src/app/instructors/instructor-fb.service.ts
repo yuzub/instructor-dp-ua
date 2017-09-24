@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from "angularfire2/database";
 
 import { IInstructor } from "./instructor";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class InstructorFbService {
@@ -37,34 +38,41 @@ export class InstructorFbService {
 
   getInstructor(instructorKey: string): FirebaseObjectObservable<IInstructor> {
     return this.db.object(`/instructors/${instructorKey}`);
+    // .catch(this.errorHandler);
   }
 
   getInstructors() {
     return this.instructors$;
+    // .catch(this.errorHandler);
   }
 
   addInstructor(instructor: IInstructor) {
-    this.instructors$.push(instructor)
+    return this.instructors$.push(instructor)
       .then(_ => console.log('add - success'))
       .catch(error => console.log(error));
   }
 
   updateInstructor(instructorKey: string, instructor: IInstructor) {
-    this.instructors$.update(instructorKey, instructor)
+    return this.instructors$.update(instructorKey, instructor)
       .then(_ => console.log('update - success'))
       .catch(error => console.log(error));
   }
 
   deleteInstructor(instructorKey: string) {
-    this.instructors$.remove(instructorKey)
+    return this.instructors$.remove(instructorKey)
       .then(_ => console.log('delete - success'))
       .catch(error => console.log(error));
   }
 
   deleteEverything() {
-    this.instructors$.remove()
+    return this.instructors$.remove()
       .then(_ => console.log('delete all - success'))
       .catch(error => console.log(error));
+  }
+
+  private errorHandler(error) {
+    console.log(error);
+    return Observable.throw(error);
   }
 
 }
