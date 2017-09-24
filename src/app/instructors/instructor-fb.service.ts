@@ -42,7 +42,7 @@ export class InstructorFbService {
   }
 
   getInstructors() {
-    return this.instructors$;
+    return this.instructors$; 
     // .catch(this.errorHandler);
   }
 
