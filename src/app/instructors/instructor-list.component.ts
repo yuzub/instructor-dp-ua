@@ -52,6 +52,7 @@ export class InstructorListComponent implements OnInit {
 
     this.instructors$
       .subscribe(instructors => {
+        // console.log(instructors);
         this.instructors = instructors;
         this.filteredInstructors = this.instructors;
       },

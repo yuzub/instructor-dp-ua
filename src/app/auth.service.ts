@@ -1,3 +1,4 @@
+import * as firebase from 'firebase/app';
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -16,11 +17,15 @@ export class AuthService {
 
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .then(_ => this.router.navigate(['/instructor-list']))
+    .then(_ => {
+      console.log('Login Google - success');
+      this.router.navigate(['/instructors']);
+    })
     .catch(error => console.log('auth error ', error));
   }
 
   logout() {
-
+    this.afAuth.auth.signOut();
+    this.router.navigate(['/welcome']);
   }
 }

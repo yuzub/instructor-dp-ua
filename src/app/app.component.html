@@ -2,11 +2,19 @@
 <div>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <a class="navbar-brand">{{pageTitle}}</a>
-      <ul class="nav navbar-nav">
+      <a class="navbar-brand" [routerLink]="['/welcome']">{{pageTitle}}</a>
+      <ul class="nav navbar-nav" *ngIf="(authService.user$ | async)?.uid">
         <li><a [routerLink]="['/welcome']">Главная</a></li>
         <li><a [routerLink]="['/instructors']">Список инструкторов</a></li>
         <li><a [routerLink]="['/instructor-edit/new']">Add instructor</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!(authService.user$ | async)?.uid">
+          <a class="btn btn-default" (click)="authService.login()">Login</a>
+        </li>
+        <li *ngIf="(authService.user$ | async)?.uid">
+          <a class="btn btn-default" (click)="authService.logout()">Logout {{(authService.user$ | async)?.displayName}}</a>
+        </li>
       </ul>
     </div>
   </nav>
