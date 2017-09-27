@@ -1,0 +1,26 @@
+<div class="panel panel-primary" *ngIf="feedback$ | async as feedback">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <div class="input-container">
+      {{feedback | json}}<br> {{feedback.$key}}<br>
+      <!--Supplement an id here instead of using 'name'-->
+      Отзыв о работе инструктора:
+      <select name="select" [(ngModel)]="feedback.instructorKey">
+        <option *ngFor="let instructor of instructors$ | async" [value]="instructor.instructorName" >{{instructor.instructorName}}</option>
+      </select><br>
+      <textarea name="textarea" [(ngModel)]="feedback.text" placeholder="Текст отзыва" minlength="15"></textarea>
+    </div>
+    <div class="actions-container">
+      <button class="btn btn-primary" *ngIf="isNewFeedback" (click)="addFeedback(feedback)">Save</button>
+      <button class="btn btn-primary" *ngIf="!isNewFeedback" (click)="updateFeedback(feedback.$key, feedback)">Update</button>
+      <button class="btn btn-primary" *ngIf="!isNewFeedback" (click)="deleteFeedback(feedback.$key)">Delete</button>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <a class="btn btn-default" (click)="onBack()">
+      <i class="glyphicon glyphicon-chevron-left"></i> Отзывы
+    </a>
+  </div>
+</div>

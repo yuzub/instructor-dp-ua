@@ -1,3 +1,41 @@
-<p>
-  feedback-list works!
-</p>
+<div class="panel panel-primary">
+
+  <div class="panel-heading">{{pageTitle}}</div>
+
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-sm-3">Отзывы по:</div>
+      <div class="col-sm-9">
+        <select name="" id=""></select>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table" *ngIf="instructors && instructors.length">
+        <thead>
+          <tr>
+            <th>Дата Автор</th>
+            <th>Инструктор</th>
+            <th>Отзыв</th>
+            <th>Оценка</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let feedback of feedback$ | async">
+            <td>
+              <a [routerLink]="['/feedbacks', feedback.$key]">
+                              {{feedback.$key}}
+                            </a>
+            </td>
+            <td>{{feedback.instructorKey}}</td>
+            <td>{{feedback.text}}</td>
+            <td>...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary add" [routerLink]="['/feedback-edit/new']">Add feedback</button>
+  </div>
+
+</div>

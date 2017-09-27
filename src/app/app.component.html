@@ -6,13 +6,17 @@
         <li><a [routerLink]="['/instructors']">Список инструкторов</a></li>
         <li><a [routerLink]="['/feedbacks']">Отзывы</a></li>
         <li><a [routerLink]="['/instructor-edit/new']">Add instructor</a></li>
+        <li><a [routerLink]="['/feedback-edit/new']">Add feedback</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!(authService.user$ | async)?.uid">
           <a class="btn btn-default" (click)="authService.login()">Login</a>
         </li>
         <li *ngIf="(authService.user$ | async)?.uid">
-          <a class="btn btn-default" (click)="authService.logout()">Logout {{(authService.user$ | async)?.displayName}}</a>
+          <a class="btn btn-default" (click)="authService.logout()">
+            Logout <img src='{{(authService.user$ | async)?.photoURL}}' [title]="(authService.user$ | async)?.displayName" [style.width.px]="imgWidth"
+            [style.margin.px]="imgMargin">
+          </a>
         </li>
       </ul>
     </div>

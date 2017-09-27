@@ -2,23 +2,25 @@
 
 
 export interface IFeedback {
-    $key?: string;
-    instructorKey: string;
-    uidFeedback: string;
-    displayName: string;
-    rating: number;
-    verified: boolean;
-    createdAt: Object;
-    title: string;
+  $key?: string;
+  instructorKey: string;
+  // uidFeedback: string;
+  // displayName: string;
+  // rating: number;
+  // verified: boolean;
+  // createdAt: Object;
+  text: string;
 }
 
 
 /* export class Feedback implements IFeedback {
-    completed = false;
-    createdAt = firebase.database.ServerValue.TIMESTAMP;
-    title;
+  instructorKey: string;
+  text: string;
+  verified = false; // after checking admin change this to true
+  createdAt = firebase.database.ServerValue.TIMESTAMP;
 
-    constructor(title: string) {
-        this.title = title;
-    }
+  constructor(instructorKey: string, text: string) {
+    this.instructorKey =instructorKey;
+    this.text = text;
+  }
 } */

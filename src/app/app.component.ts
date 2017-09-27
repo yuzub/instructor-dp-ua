@@ -9,5 +9,7 @@ import { AuthService } from "./auth/auth.service";
 })
 export class AppComponent {
   pageTitle = 'Ваш автоинструктор';
+  imgWidth: number = 25;
+  imgMargin: number = 2;
   constructor(public authService: AuthService) { }
 }

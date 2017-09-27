@@ -13,16 +13,26 @@ import { AppComponent } from './app.component';
 import { InstructorListComponent } from './instructors/instructor-list.component';
 import { InstructorDetailComponent } from './instructors/instructor-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
-import { InstructorGuardService } from './instructors/instructor-guard.service';
-import { InstructorFbService } from "./instructors/instructor-fb.service";
 import { InstructorEditComponent } from './instructors/instructor-edit.component';
-import { AuthService } from "./auth/auth.service";
-import { AuthGuard } from "./auth/auth.guard";
 import { FeedbackListComponent } from './feedbacks/feedback-list.component';
+import { FeedbackEditComponent } from "./feedbacks/feedback-edit.component";
+
+import { InstructorFbService } from "./instructors/instructor-fb.service";
+import { FeedbackFbService } from "./feedbacks/feedback-fb.service";
+import { AuthService } from "./auth/auth.service";
+
+import { InstructorGuardService } from './instructors/instructor-guard.service';
+import { AuthGuard } from "./auth/auth.guard";
 
 @NgModule({
   declarations: [
-    AppComponent, InstructorListComponent, InstructorDetailComponent, WelcomeComponent, InstructorEditComponent, FeedbackListComponent
+    AppComponent,
+    InstructorListComponent,
+    InstructorDetailComponent,
+    InstructorEditComponent,
+    WelcomeComponent,
+    FeedbackListComponent,
+    FeedbackEditComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +46,7 @@ import { FeedbackListComponent } from './feedbacks/feedback-list.component';
       { path: 'instructors/:id', component: InstructorDetailComponent, canActivate: [AuthGuard] },
       { path: 'instructor-edit/:id', component: InstructorEditComponent, canActivate: [AuthGuard] },
       { path: 'feedbacks', component: FeedbackListComponent, canActivate: [AuthGuard] },
+      { path: 'feedback-edit/:id', component: FeedbackEditComponent, canActivate: [AuthGuard] },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
@@ -43,7 +54,7 @@ import { FeedbackListComponent } from './feedbacks/feedback-list.component';
   ],
   providers: [
     AuthGuard, InstructorGuardService,
-    InstructorFbService,  AuthService],
+    InstructorFbService, AuthService, FeedbackFbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
