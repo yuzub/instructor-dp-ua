@@ -16,11 +16,13 @@ import { WelcomeComponent } from "./home/welcome.component";
 import { InstructorGuardService } from './instructors/instructor-guard.service';
 import { InstructorFbService } from "./instructors/instructor-fb.service";
 import { InstructorEditComponent } from './instructors/instructor-edit.component';
-import { AuthService } from "./auth.service";
+import { AuthService } from "./auth/auth.service";
+import { AuthGuard } from "./auth/auth.guard";
+import { FeedbackListComponent } from './feedbacks/feedback-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent, InstructorListComponent, InstructorDetailComponent, WelcomeComponent, InstructorEditComponent
+    AppComponent, InstructorListComponent, InstructorDetailComponent, WelcomeComponent, InstructorEditComponent, FeedbackListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,15 +32,18 @@ import { AuthService } from "./auth.service";
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'instructors', component: InstructorListComponent },
-      { path: 'instructors/:id', component: InstructorDetailComponent },
-      { path: 'instructor-edit/:id', component: InstructorEditComponent },
+      { path: 'instructors', component: InstructorListComponent, canActivate: [AuthGuard] },
+      { path: 'instructors/:id', component: InstructorDetailComponent, canActivate: [AuthGuard] },
+      { path: 'instructor-edit/:id', component: InstructorEditComponent, canActivate: [AuthGuard] },
+      { path: 'feedbacks', component: FeedbackListComponent, canActivate: [AuthGuard] },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ])
   ],
-  providers: [InstructorFbService, InstructorGuardService, AuthService],
+  providers: [
+    AuthGuard, InstructorGuardService,
+    InstructorFbService,  AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

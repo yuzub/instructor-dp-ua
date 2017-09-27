@@ -24,6 +24,8 @@ export class AuthService {
     .catch(error => console.log('auth error ', error));
   }
 
+
+
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/welcome']);

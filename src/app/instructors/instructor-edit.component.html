@@ -20,24 +20,3 @@
     </a>
   </div>
 </div>
-
-<div class="panel panel-primary" *ngIf="instructor$ | async as instructor">
-  <div class="panel-heading">
-    Object Edit
-  </div>
-  <div class="panel-body">
-    <div class="input-container" *ngIf="obj$ | async as obj">
-      <input type="text" [(ngModel)]="obj.name">
-    </div>
-    <div class="actions-container">
-      <button class="btn btn-primary" (click)="saveObj(obj)">Save</button>
-      <button class="btn btn-primary" (click)="updateObj(obj)">Update</button>
-      <button class="btn btn-primary" (click)="removeObj(obj)">Delete</button>
-    </div>
-  </div>
-  <div class="panel-footer">
-    <a class="btn btn-default" (click)="onBack()">
-      <i class="glyphicon glyphicon-chevron-left"></i> Список
-    </a>
-  </div>
-</div>
