@@ -6,13 +6,15 @@
 
     <div class="row">
       <div class="col-sm-3">Отзывы по:</div>
-      <div class="col-sm-9">
-        <select name="" id=""></select>
-      </div>
+<!--       <div class="col-sm-9">
+        <select name="select" (change)=getFeedbacks($event.value)>
+          <option *ngFor="let instructor of instructors$ | async" [value]="instructor.$key" >{{instructor.instructorName}}</option>
+        </select>
+      </div> -->
     </div>
 
     <div class="table-responsive">
-      <table class="table" *ngIf="instructors && instructors.length">
+      <table class="table" *ngIf="feedbacks && feedbacks.length">
         <thead>
           <tr>
             <th>Дата Автор</th>
@@ -22,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let feedback of feedback$ | async">
+          <tr *ngFor="let feedback of feedbacks$ | async">
             <td>
               <a [routerLink]="['/feedbacks', feedback.$key]">
                               {{feedback.$key}}
