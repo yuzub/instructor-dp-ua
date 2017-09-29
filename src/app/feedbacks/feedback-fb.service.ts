@@ -19,8 +19,13 @@ export class FeedbackFbService {
     // .catch(this.errorHandler);
   }
 
-  getFeedbacks() {
-    return this.feedbacks$;
+  getFeedbacks(instructorKey: string) {
+    return this.db.list('/feedbacks', {
+      query: {
+        orderByChild: 'instructorKey',
+        equalTo: instructorKey
+      }
+    });
     // .catch(this.errorHandler);
   }
 

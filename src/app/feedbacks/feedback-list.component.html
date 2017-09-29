@@ -6,11 +6,12 @@
 
     <div class="row">
       <div class="col-sm-3">Отзывы по:</div>
-<!--       <div class="col-sm-9">
+      <div class="col-sm-9">
         <select name="select" (change)=getFeedbacks($event.value)>
+          <option [value]="undefined">Все</option>
           <option *ngFor="let instructor of instructors$ | async" [value]="instructor.$key" >{{instructor.instructorName}}</option>
         </select>
-      </div> -->
+      </div>
     </div>
 
     <div class="table-responsive">

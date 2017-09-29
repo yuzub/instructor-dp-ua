@@ -36,8 +36,8 @@ export class FeedbackListComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  getFeedbacks() {
-    this.feedbacks$ = this.feedbackFbService.getFeedbacks();
+  getFeedbacks(instructorKey?: string) {
+    this.feedbacks$ = this.feedbackFbService.getFeedbacks(instructorKey);
     console.log(this.feedbacks$);
   }
 
