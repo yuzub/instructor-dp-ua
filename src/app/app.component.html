@@ -10,7 +10,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!(authService.user$ | async)?.uid">
-          <a class="btn btn-default" (click)="authService.login()">Login</a>
+          <a class="btn btn-default" (click)="authService.googleLogin()">Login</a>
         </li>
         <li *ngIf="(authService.user$ | async)?.uid">
           <a class="btn btn-default" (click)="authService.logout()">

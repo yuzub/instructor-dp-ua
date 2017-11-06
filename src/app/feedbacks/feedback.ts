@@ -24,3 +24,20 @@ export interface IFeedback {
     this.text = text;
   }
 } */
+
+
+// Users can only write data they own
+
+// This app has user feedbacks nested under their user id.
+// You can prevent other users from accessing or writing this data
+// by comparing the auth.uid to the uid database key.
+// See Example of Firebase Database Rules below
+
+// "rules": {
+//   "feedbacks": {
+//      "$uid": {
+//        ".read": "$uid === auth.uid",
+//        ".write": "$uid === auth.uid"
+//      }
+//    }
+//  }

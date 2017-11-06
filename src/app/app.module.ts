@@ -23,6 +23,7 @@ import { AuthService } from "./auth/auth.service";
 
 import { InstructorGuardService } from './instructors/instructor-guard.service';
 import { AuthGuard } from "./auth/auth.guard";
+import { AdminGuard } from './auth/admin.gurds';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { AuthGuard } from "./auth/auth.guard";
     RouterModule.forRoot([
       { path: 'instructors', component: InstructorListComponent, canActivate: [AuthGuard] },
       { path: 'instructors/:id', component: InstructorDetailComponent, canActivate: [AuthGuard] },
-      { path: 'instructor-edit/:id', component: InstructorEditComponent, canActivate: [AuthGuard] },
+      { path: 'instructor-edit/:id', component: InstructorEditComponent, canActivate: [AuthGuard, AdminGuard] },
       { path: 'feedbacks', component: FeedbackListComponent, canActivate: [AuthGuard] },
       { path: 'feedback-edit/:id', component: FeedbackEditComponent, canActivate: [AuthGuard] },
       { path: 'welcome', component: WelcomeComponent },
@@ -53,7 +54,7 @@ import { AuthGuard } from "./auth/auth.guard";
     ])
   ],
   providers: [
-    AuthGuard, InstructorGuardService,
+    AuthGuard, AdminGuard, InstructorGuardService,
     InstructorFbService, AuthService, FeedbackFbService],
   bootstrap: [AppComponent]
 })

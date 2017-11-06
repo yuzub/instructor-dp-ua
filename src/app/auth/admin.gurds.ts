@@ -4,22 +4,23 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from "./auth.service";
 
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService) { }
 
   canActivate(): Observable<boolean> {
-    return this.authService.user$
-      .map(user => {
-        if (user && user.uid) {
-          return true
-        } else {
-          this.router.navigate(['/welcome']);
-          return false;
+    return this.authService.user
+      .take(1)
+      .map(user => user.roles.admin || user.roles.moderator)
+      .do(authorized => {
+        if (!authorized) {
+          alert('Access only for moderator and admin.');
         }
       });
   }
